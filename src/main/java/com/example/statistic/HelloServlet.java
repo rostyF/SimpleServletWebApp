@@ -13,6 +13,7 @@ public class HelloServlet extends HttpServlet {
 
 
 
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("index.jsp");
         /*response.setContentType("text/html");
@@ -25,19 +26,36 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
         String answer = req.getParameter("question");
 
+            if (answer== null){
+                
+            }
+            else if (answer.equals("left")){
+                leftHand++;
+                count++;
 
-        if (answer.equals("right")){
-            count++;
+            }
+            else if (answer.equals("right")){
             rightHand++;
-        }
-        else if (answer.equals("left")){
             count++;
-            leftHand++;
+            }
+
+        if(count==3){
+            count = 0;
+            resp.setContentType("text/html; charset = utf-8");
+            resp.getWriter().println("<!DOCTYPE html>");
+            resp.getWriter().println("<html><h1> Кількість правшей:" + rightHand + "</h1>");
+            resp.getWriter().println("<h1> Кількість лівшей:" + leftHand + "</h1>");
+            resp.getWriter().println("<a href=\"index.jsp\">Продолжить опрос</a></html>");
+        }
+        else {
+            resp.sendRedirect("index.jsp");
         }
 
-        resp.sendRedirect("index.jsp");
+
+
 
     }
 

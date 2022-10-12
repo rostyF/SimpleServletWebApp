@@ -5,13 +5,10 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
 <h1>Какой рукой Вы пишете? </h1>
 <br/>
-<form action="/hello-servlet" method="POST">
+<form action="hello-servlet" method="POST">
     <label>
         <input type="radio" name="question" value="right">
         Правша
